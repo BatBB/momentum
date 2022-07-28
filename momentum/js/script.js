@@ -3,12 +3,14 @@ import { showTime, getTimeOfDay} from "../js/time.js";
 import { setLocalStorage, getLocalStorage } from "../js/save_local_storage.js";
 import setBg from "../js/background.js";
 import getWeather from "../js/weather.js";
+import getQuotes from "../js/quotes.js";
 
 
 /* -------------- Variables -------------- */
 const slideNext = document.querySelector('.slide-next'),
       slidePrev = document.querySelector('.slide-prev'),
-      city = document.querySelector('.city');
+      city = document.querySelector('.city'),
+      changeQuote = document.querySelector('.change-quote');
 
 const getRandomNum = () => Math.floor(Math.random() * 20) + 1;
 let randomNum = getRandomNum();
@@ -34,10 +36,8 @@ const getSlidePrev = () => {
 slidePrev.addEventListener('click', getSlidePrev);
 slideNext.addEventListener('click', getSlideNext);
 
-
 window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
-
 
 const input = document.querySelector('.name');
 input.addEventListener('input', resizeInput); 
@@ -52,3 +52,6 @@ getWeather(city.value)
 city.addEventListener('change', () => {
   getWeather(city.value);
 })
+
+getQuotes();
+changeQuote.addEventListener('click', getQuotes)
