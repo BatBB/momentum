@@ -8,12 +8,13 @@ import setBg from "../js/background.js"
 const slideNext = document.querySelector('.slide-next'),
       slidePrev = document.querySelector('.slide-prev');
 
+const getRandomNum = () => Math.floor(Math.random() * 20) + 1;
+let randomNum = getRandomNum();
+
 
 showTime();
 getLocalStorage();
 
-const getRandomNum = () => Math.floor(Math.random() * 20) + 1;
-let randomNum = getRandomNum();
 
 setBg(getTimeOfDay(), randomNum);
 
@@ -34,3 +35,13 @@ slideNext.addEventListener('click', getSlideNext);
 
 window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
+
+
+const input = document.querySelector('.name');
+input.addEventListener('input', resizeInput); 
+resizeInput.call(input);
+
+function resizeInput() {
+  this.style.width = this.value.length === 0 ? '335px' : ((this.value.length + 1) + 'ex');
+  console.log(this.style.width);
+}

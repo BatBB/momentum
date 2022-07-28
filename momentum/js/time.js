@@ -18,4 +18,4 @@ export function getTimeOfDay() {
 
 function showGreeting() {
   greeting.textContent = `Good ${getTimeOfDay()}, `
-}
+} 
