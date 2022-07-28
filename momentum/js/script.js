@@ -1,12 +1,14 @@
 /* -------------- imports -------------- */
 import { showTime, getTimeOfDay} from "../js/time.js";
 import { setLocalStorage, getLocalStorage } from "../js/save_local_storage.js";
-import setBg from "../js/background.js"
+import setBg from "../js/background.js";
+import getWeather from "../js/weather.js";
 
 
 /* -------------- Variables -------------- */
 const slideNext = document.querySelector('.slide-next'),
-      slidePrev = document.querySelector('.slide-prev');
+      slidePrev = document.querySelector('.slide-prev'),
+      city = document.querySelector('.city');
 
 const getRandomNum = () => Math.floor(Math.random() * 20) + 1;
 let randomNum = getRandomNum();
@@ -42,6 +44,11 @@ input.addEventListener('input', resizeInput);
 resizeInput.call(input);
 
 function resizeInput() {
-  this.style.width = this.value.length === 0 ? '335px' : ((this.value.length + 1) + 'ex');
-  console.log(this.style.width);
+  this.style.width = this.value.length === 0 ? '335px' : ((this.value.length + 0.5) + 'ex');
 }
+
+city.value = localStorage.getItem('city') || 'Minsk';
+getWeather(city.value)
+city.addEventListener('change', () => {
+  getWeather(city.value);
+})
