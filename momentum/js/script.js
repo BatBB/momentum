@@ -1,20 +1,22 @@
 /* -------------- imports -------------- */
-import { showTime, getTimeOfDay} from "../js/time.js";
+import { showTime, getTimeOfDay } from "../js/time.js";
 import { setLocalStorage, getLocalStorage } from "../js/save_local_storage.js";
 import setBg from "../js/background.js";
 import getWeather from "../js/weather.js";
 import getQuotes from "../js/quotes.js";
-
+import { createPlayList, setPlayPause, playNext, playPrev, upgradeProgressPlay, clickVolume, changeVolume, playListClick } from "../js/player.js"
 
 /* -------------- Variables -------------- */
 const slideNext = document.querySelector('.slide-next'),
-      slidePrev = document.querySelector('.slide-prev'),
-      city = document.querySelector('.city'),
-      changeQuote = document.querySelector('.change-quote');
+  slidePrev = document.querySelector('.slide-prev'),
+  city = document.querySelector('.city'),
+  changeQuote = document.querySelector('.change-quote'),
+  play = document.querySelector('.play'),
+  playNextBtn = document.querySelector('.play-next'),
+  playPrevBtn = document.querySelector('.play-prev');
 
 const getRandomNum = () => Math.floor(Math.random() * 20) + 1;
 let randomNum = getRandomNum();
-
 
 showTime();
 getLocalStorage();
@@ -40,7 +42,7 @@ window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
 
 const input = document.querySelector('.name');
-input.addEventListener('input', resizeInput); 
+input.addEventListener('input', resizeInput);
 resizeInput.call(input);
 
 function resizeInput() {
@@ -55,3 +57,37 @@ city.addEventListener('change', () => {
 
 getQuotes();
 changeQuote.addEventListener('click', getQuotes)
+
+
+/*--------------------------------------------------------------------------------------------------*/
+createPlayList();
+
+changeVolume(0.5);
+
+play.addEventListener('click', () => {
+  setPlayPause()
+});
+
+const progressBar = document.querySelector('.progress-bar');
+progressBar.addEventListener('change', () => {
+  upgradeProgressPlay (progressBar.value);
+})
+
+const volume = document.querySelector('.volume');
+volume.addEventListener('click', clickVolume);
+
+const volumeRange = document.querySelector('.volume-range');
+volumeRange.addEventListener('change', () => {
+  changeVolume(volumeRange.value);
+})
+
+playNextBtn.addEventListener('click', playNext);
+playPrevBtn.addEventListener('click', playPrev);
+
+const playItem = document.querySelectorAll('.play-item');
+console.log(playItem);
+playItem.forEach ((el, ind) => {
+  el.addEventListener('click', () => {
+    playListClick(ind);
+  })
+})

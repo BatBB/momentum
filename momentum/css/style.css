@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Arial-MT';
   src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
- }
+}
 
 * {
   box-sizing: border-box;
@@ -37,11 +37,79 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 120px;
-  margin-bottom: 28px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.track-title {
+  height: 20px;
+  margin-bottom: 5px;
+  opacity: .9;
+}
+
+.progress-bar {
+  background: #fff;
+  width: 100%;
+  transition: 0.25s;
+  margin-bottom: 15px;
+}
+
+.container-volume-timer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  height: 20px;
+  margin-bottom: 15px;
+}
+
+.timer {
+  display: flex;
+  justify-content: start;
+  height: 16px;
+  align-items: center;
+  font-size: 11px;
+}
+
+.current,
+.duration {
+}
+
+.container-volume {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.volume-range {
+  position: absolute;
+  width: 0;
+  left: -10px;
+  width: 60px;
+  left: -65px;
+}
+
+.volume {
+  width: 20px;
+  height: 20px;
+  background-image: url(../assets/svg/volume-1.svg);
+  background-size: 20px 20px;
+  cursor: pointer;
+}
+
+.volume-2 {
+  background-image: url(../assets/svg/volume-2.svg);
+}
+
+.mute {
+  background-image: url(../assets/svg/volume-x.svg);
+}
+
+.container-volume {
 }
 
 .play-list {
   text-align: left;
+  z-index: 10;
 }
 
 .play-item {
