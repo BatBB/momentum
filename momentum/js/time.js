@@ -1,11 +1,11 @@
 const time = document.querySelector('.time'),
   date = document.querySelector('.date'),
-  greeting = document.querySelector('.greeting');
+  greeting = document.querySelector('.greeting-text');
 
 export function showTime() {
   const curDate = new Date();
   const options = { month: 'long', day: 'numeric', year: 'numeric', weekday: 'long' };
-  time.textContent = curDate.toLocaleTimeString();
+  time.textContent = curDate.toLocaleTimeString('en');
   date.textContent = curDate.toLocaleDateString('en', options);
   showGreeting();
   setTimeout(showTime, 1000);

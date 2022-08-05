@@ -51,9 +51,6 @@ function resizeInput() {
 
 city.value = localStorage.getItem('city') || 'Minsk';
 getWeather(city.value)
-city.addEventListener('change', () => {
-  getWeather(city.value);
-})
 
 getQuotes();
 changeQuote.addEventListener('click', getQuotes)
@@ -68,26 +65,98 @@ play.addEventListener('click', () => {
   setPlayPause()
 });
 
-const progressBar = document.querySelector('.progress-bar');
-progressBar.addEventListener('change', () => {
-  upgradeProgressPlay (progressBar.value);
-})
-
 const volume = document.querySelector('.volume');
 volume.addEventListener('click', clickVolume);
-
-const volumeRange = document.querySelector('.volume-range');
-volumeRange.addEventListener('change', () => {
-  changeVolume(volumeRange.value);
-})
 
 playNextBtn.addEventListener('click', playNext);
 playPrevBtn.addEventListener('click', playPrev);
 
 const playItem = document.querySelectorAll('.play-item');
-console.log(playItem);
-playItem.forEach ((el, ind) => {
+playItem.forEach((el, ind) => {
   el.addEventListener('click', () => {
     playListClick(ind);
   })
 })
+
+function toggleActive() {
+  document.querySelector('.overlay').classList.toggle('hidden');
+  document.querySelector('.popup-settings').classList.toggle('hidden');
+}
+
+document.querySelector('.setting').addEventListener('click', () => {
+  toggleActive()
+})
+
+document.querySelector('.overlay').addEventListener('click', () => {
+  toggleActive()
+})
+
+
+function checkBlock(id) {
+  const checkbox = document.getElementById(id);
+  if (checkbox.checked === false) {
+    document.querySelector('.'+id).classList.add('hidden');
+  }
+  else {
+    document.querySelector('.'+id).classList.remove('hidden');
+  }
+}
+
+document.body.addEventListener('change', (el) =>{
+  const className = el.target.classList.value;
+  
+  if (className.includes('check-block')) {
+    switch(el.target.id) {
+      case 'time' : checkBlock('time'); break;
+      case 'date' : checkBlock('date'); break;
+      case 'greeting' : checkBlock('greeting'); break;
+      case 'player' : checkBlock('player'); break;
+      case 'weather' : checkBlock('weather'); break;
+      case 'quote' : checkBlock('quote'); break;
+      case 'todo' : checkBlock('todo'); break; 
+    }
+  }
+
+  if (className.includes('progress-bar')) {
+    const progressBar = document.querySelector('.progress-bar');
+    upgradeProgressPlay(progressBar.value)
+  }
+
+  if (className.includes('city')) {
+    getWeather(city.value);
+  }
+
+  if (className.includes('volume-range')) {
+    const volumeRange = document.querySelector('.volume-range');
+    changeVolume(volumeRange.value);
+  }
+})
+
+// import i18next from 'https://deno.land/x/i18next/index.js';
+
+// i18next.init({
+//   lng: 'en',
+//   debug: true,
+//   resources: {
+//     en: {
+//       translation: {
+//         'morning' : 'Good morning',
+//         'afternoon' : 'Good afternoon',
+//         'evening' : 'Good evening',
+//         'night' : 'Good night',
+//         'placeholder' : '[Enter your name]',
+//       }
+//     },
+//     ru: {
+//       translation: {
+//         'vorning' : 'Доброе утро',
+//         'afternoon' : 'Добрый день',
+//         'evening' : 'Добрый вечер',
+//         'night' : 'Спокойной ночи',
+//         'placeholder' : '[Введите свое имя]'
+//       }
+//     }
+//   }
+// });
+
+// document.querySelector('.greeting').textContent = i18next.t('greeting');

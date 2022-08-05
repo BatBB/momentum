@@ -1,4 +1,4 @@
-const quote = document.querySelector('.quote'),
+const quote = document.querySelector('.quote-text'),
   author= document.querySelector('.author');
 
 const getRandomQuote = quantityQuote => Math.floor(Math.random() * quantityQuote);

@@ -20,12 +20,18 @@
         <input type="range" class="progress-bar" min="0" max="" value="0" />
         <div class="container-volume-timer">
           <div class="timer">
-            <div class="current">00:00 </div>
+            <div class="current">00:00</div>
             <span>&nbsp/&nbsp</span>
-            <div class="duration"> 00:00</div>
+            <div class="duration">00:00</div>
           </div>
           <div class="container-volume">
-            <input class="volume-range" type="range" min="0" max="1" step="0.01">
+            <input
+              class="volume-range"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+            />
             <div class="volume"></div>
           </div>
         </div>
@@ -50,18 +56,57 @@
       </div>
       <time class="time"></time>
       <date class="date"></date>
-      <div class="greeting-container">
-        <div class="greeting"></div>
+      <div class="greeting">
+        <div class="greeting-text"></div>
         <input type="text" class="name" placeholder="[Enter your name]" />
       </div>
     </main>
     <footer class="footer">
-      <button class="change-quote"></button>
-      <div>
-        <div class="quote"></div>
-        <div class="author"></div>
+      <div class="setting"></div>
+      <div class="quote">
+        <button class="change-quote"></button>
+        <div>
+          <div class="quote-text"></div>
+          <div class="author"></div>
+        </div>
       </div>
+      <div class="todo"></div>
     </footer>
+    <div class="overlay hidden"></div>
+    <div class="popup-settings hidden">
+      <div class="column-left">
+        <label>Time: <input class="check-block" id="time" type="checkbox" checked /></label>
+        <label>Date: <input class="check-block" id="date" type="checkbox" checked /></label>
+        <label>Greeting: <input class="check-block" id="greeting" type="checkbox" checked /></label>
+        <label>Quote: <input class="check-block" id="quote" type="checkbox" checked /></label>
+        <label>Audio: <input class="check-block" id="player" type="checkbox" checked /></label>
+        <label>Weather: <input class="check-block" id="weather" type="checkbox" checked /></label>
+        <label>Todo list: <input class="check-block" id="todo" type="checkbox" checked /></label>
+      </div>
+      <div class="column-right">
+        <div class="language-block">
+          <div>Language:</div>
+          <div class="radio-block">
+            <label for="en"
+              >EN
+              <input type="radio" name="language" id="en" value="en" checked />
+            </label>
+            <label for="ru"
+              >RU
+              <input type="radio" name="language" id="ru" value="ru" />
+            </label>
+          </div>
+        </div>
+        <label for="imageApi"
+          >Images API:
+          <select name="imagesApi" id="imagesApi">
+            <option>Github</option>
+            <option>Unsplash API</option>
+            <option>Flickr API</option>
+          </select>
+        </label>
+      </div>
+    </div>
     <script type="module" src="js/script.js"></script>
   </body>
 </html>

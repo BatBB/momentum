@@ -48,6 +48,7 @@ body {
 }
 
 .progress-bar {
+  opacity: .8;
   background: #fff;
   width: 100%;
   transition: 0.25s;
@@ -75,6 +76,7 @@ body {
 }
 
 .container-volume {
+  opacity: .8;
   position: relative;
   display: flex;
   align-items: center;
@@ -277,7 +279,7 @@ body {
   margin-bottom: 20px;
 }
 
-.greeting-container {
+.greeting {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -287,7 +289,7 @@ body {
   font-size: 40px;
 }
 
-.greeting {
+.greeting-text {
   padding: 10px;
   text-align: right;
 }
@@ -308,27 +310,140 @@ body {
 
 .footer {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
   height: 30vh;
   min-height: 160px;  
   padding: 20px;
 }
 
-.change-quote {
-  margin-bottom: 30px;
-  background-image: url("../assets/svg/reload.svg");  
+.setting,
+.todo {
+  width: 30px;
+  height: 30px;
+  background: url(../assets/svg/settings.svg) center no-repeat;
+  opacity: .8;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.setting:hover {
+  transform: rotate(90deg);
+}
+
+.todo {
+  background: url(../assets/img/todo-icon.png) center no-repeat;
+  background-size: 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  visibility: visible;
+}
+
+.popup-settings {
+  max-width: 500px;
+  width: 100%;
+  max-height: 300px;
+  height: 100%;
+  background-color: rgba(25, 25, 25, 0.5);
+  position: absolute;
+  left: 50px;
+  bottom: 50px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 30% 48%;
+  justify-content: center;
+  gap: 15%;
+  border-radius: 20px;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+.column-left {
+  display: grid;
+  align-items: start;
+  gap: 7%;
+}
+
+.column-left label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column-right {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  align-items: start;
+}
+
+.column-right label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.language-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 25%;
+}
+
+.radio-block {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-block label {
+  gap: 5px;
 }
 
 .quote {
-  min-height: 32px;
+  text-align: center;
+  width: 60%;
+}
+
+.change-quote {
+  margin-bottom: 25px;
+  background-image: url("../assets/svg/reload.svg");  
+}
+
+.quote-text {
+  min-height: 40px;
+  flex-wrap: wrap;
 }
 
 .author {
   min-height: 20px;
 }
+
+.player,
+.weather,
+.time,
+.date,
+.greeting,
+.quote,
+.todo {
+  opacity: 1;
+  transition: all 0.5s ease;
+  visibility: visible;
+}
+
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
 
 @media (max-width: 768px) {
   .time {
@@ -336,12 +451,12 @@ body {
     font-size: 72px;    
   }
 
-  .greeting-container {
+  .greeting {
     min-height: 40px;
     font-size: 32px;
   }
 
-  .greeting {
+  .greeting-text {
     padding: 5px;
   }
 
