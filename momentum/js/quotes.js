@@ -4,15 +4,15 @@ const quote = document.querySelector('.quote-text'),
 const getRandomQuote = quantityQuote => Math.floor(Math.random() * quantityQuote);
 
 async function getQuotes() {  
-  const url = 'https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json'
-  const quotes = url;
+  const quotes = 'data.json';
   const res = await fetch(quotes);
   const data = await res.json();
-  const quoteLength = data.quotes.length;
-  const randomQute = getRandomQuote(quoteLength);
   
-  quote.textContent = `"${data.quotes[randomQute].quote}"`;
-  author.textContent = data.quotes[randomQute].author;
+  const quoteCount = data.en.length;
+  const randomQuote = getRandomQuote(quoteCount);
+  
+  quote.textContent = `"${data.en[randomQuote].quote}"`;
+  author.textContent = data.en[randomQuote].author;
 }
 
 export default getQuotes;

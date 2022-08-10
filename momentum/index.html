@@ -75,18 +75,36 @@
     <div class="overlay hidden"></div>
     <div class="popup-settings hidden">
       <div class="column-left">
-        <label>Time: <input class="check-block" id="time" type="checkbox" checked /></label>
-        <label>Date: <input class="check-block" id="date" type="checkbox" checked /></label>
-        <label>Greeting: <input class="check-block" id="greeting" type="checkbox" checked /></label>
-        <label>Quote: <input class="check-block" id="quote" type="checkbox" checked /></label>
-        <label>Audio: <input class="check-block" id="player" type="checkbox" checked /></label>
-        <label>Weather: <input class="check-block" id="weather" type="checkbox" checked /></label>
-        <label>Todo list: <input class="check-block" id="todo" type="checkbox" checked /></label>
+        <label
+          >Time: <input class="check-block" id="time" type="checkbox" checked
+        /></label>
+        <label
+          >Date: <input class="check-block" id="date" type="checkbox" checked
+        /></label>
+        <label
+          >Greeting:
+          <input class="check-block" id="greeting" type="checkbox" checked
+        /></label>
+        <label
+          >Quote: <input class="check-block" id="quote" type="checkbox" checked
+        /></label>
+        <label
+          >Audio:
+          <input class="check-block" id="player" type="checkbox" checked
+        /></label>
+        <label
+          >Weather:
+          <input class="check-block" id="weather" type="checkbox" checked
+        /></label>
+        <label
+          >Todo list:
+          <input class="check-block" id="todo" type="checkbox" checked
+        /></label>
       </div>
       <div class="column-right">
         <div class="language-block">
           <div>Language:</div>
-          <div class="radio-block">
+          <div class="language-select">
             <label for="en"
               >EN
               <input type="radio" name="language" id="en" value="en" checked />
@@ -97,15 +115,33 @@
             </label>
           </div>
         </div>
-        <label for="imageApi"
-          >Images API:
-          <select name="imagesApi" id="imagesApi">
-            <option>Github</option>
-            <option>Unsplash API</option>
-            <option>Flickr API</option>
-          </select>
-        </label>
+        <div class="images-block">
+          <label class="images-api" for="imageApi"
+            >Images API:
+            <select name="imagesSource" id="imagesSource">
+              <option value="github" selected>Github</option>
+              <option value="unsplash">Unsplash API</option>
+              <option value="flickr">Flickr API</option>
+            </select>
+          </label>
+          <label class="images-tag hidden" for="tag">
+            Tag:
+            <input
+              class="tag"
+              type="text"
+              id="tag"
+              placeholder="Enter tag for imageAPI"
+            />
+          </label>
+        </div>
       </div>
+    </div>
+    <div class="popup-todo hidden">
+      <div class="todo-input">
+        <input class="todo-text" type="text" />
+        <span class="todo-add"></span>
+      </div>
+      <ul class="todo-items"></ul>
     </div>
     <script type="module" src="js/script.js"></script>
   </body>

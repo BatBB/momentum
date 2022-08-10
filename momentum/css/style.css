@@ -71,10 +71,6 @@ body {
   font-size: 11px;
 }
 
-.current,
-.duration {
-}
-
 .container-volume {
   opacity: .8;
   position: relative;
@@ -104,9 +100,6 @@ body {
 
 .mute {
   background-image: url(../assets/svg/volume-x.svg);
-}
-
-.container-volume {
 }
 
 .play-list {
@@ -333,11 +326,6 @@ body {
   transform: rotate(90deg);
 }
 
-.todo {
-  background: url(../assets/img/todo-icon.png) center no-repeat;
-  background-size: 100%;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -352,7 +340,7 @@ body {
   width: 100%;
   max-height: 300px;
   height: 100%;
-  background-color: rgba(25, 25, 25, 0.5);
+  background-color: rgba(25, 25, 25, 0.8);
   position: absolute;
   left: 50px;
   bottom: 50px;
@@ -397,13 +385,72 @@ body {
   height: 25%;
 }
 
-.radio-block {
+.language-select {
   display: flex;
   gap: 10px;
 }
 
-.radio-block label {
+.language-select label {
   gap: 5px;
+}
+
+.images-api {
+  margin-bottom: 20px;
+}
+
+.todo {
+  background: url(../assets/img/todo-icon.png) center no-repeat;
+  background-size: 100%;
+}
+
+.popup-todo {
+  max-width: 300px;
+  width: 100%;
+  max-height: 300px;
+  height: 100%;
+  background-color: rgba(25, 25, 25, 0.5);
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  padding: 20px;
+  border-radius: 20px;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+.todo-input {
+  display: flex;
+  height: 20px;
+  align-items: center;
+}
+
+.todo-text {
+  width: calc(100% - 10px);
+}
+
+.todo-add {
+  width: 18px;
+  height: 18px;
+  background: url(../assets/svg/plus.svg) center/cover;
+  cursor: pointer;
+}
+
+.todo-remove {
+  width: 18px;
+  height: 18px;
+  background: url(../assets/svg/remove.svg) center/cover;
+  cursor: pointer;
+}
+
+.todo-items {
+  text-align: start;
+}
+
+.todo-item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .quote {

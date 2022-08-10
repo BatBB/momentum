@@ -1,0 +1,126 @@
+{
+  "en" : [
+    {
+      "quote" : "It's easy to quit smoking. I've done it hundreds of times.",
+      "author" : "Mark Twain"
+    },
+    {
+      "quote" : "Many of life's failures are people who did not realize how close they were to success when they gave up.",
+      "author" : "Thomas Alva Edison"
+    },
+    {
+      "quote" : "When inspiration does not come to me, I go halfway to meet it.",
+      "author" : "Sigmund Freud"
+    },
+    {
+      "quote" : "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+      "author" : "Albert Einstein"
+    },
+    {
+      "quote" : "Illusion is the first of all pleasures.",
+      "author" : "Oscar Wilde"
+    },
+    {
+      "quote" : "Success doesn't come to you… You go to it.",
+      "author" : "Marva Collins"
+    },
+    {
+      "quote" : "Music is the soul of language.",
+      "author" : "Max Heindel"
+    },
+    {
+      "quote" : "Chop your own wood and it will warm you twice.",
+      "author" : "Henry Ford"
+    },
+    {
+      "quote" : "I don`t care what you think about me. I don`t think about you at all.",
+      "author" : "Coco Chanel"
+    },
+    {
+      "quote" : "Work hard to get what you like, otherwise you'll be forced to just like what you get.",
+      "author" : "Bernard Shaw"
+    },
+    {
+      "quote" : "In the End, we will remember not the words of our enemies, but the silence of our friends.",
+      "author" : "Martin Luther King Jr."
+    },
+    {
+      "quote" : "Success is the ability to go from failure to failure without losing your enthusiasm.",
+      "author" : "Winston Churchill"
+    },
+    {
+      "quote" : "There is no such thing as an accident. What we call by that name is the effect of some cause which we do not see.",
+      "author" : "Voltaire"
+    },
+    {
+      "quote" : "The biggest risk is not taking any risk. In a world that's changing really quickly, the only strategy that is guaranteed to fail is not taking risks.",
+      "author" : "Mark Zuckerberg"
+    },
+    {
+      "quote" : "Wise men speak because they have something to say; fools because they have to say something.",
+      "author" : "Πλάτων"
+    }
+  ],
+  "ru": [
+    {
+      "quote" : "Бросить курить легко. Я сам бросал раз сто.",
+      "author" : "Марк Твен"
+    },
+    {
+      "quote" : "Во многих неудачах люди не понимали, когда сдавались, насколько близки они были к успеху. ",
+      "author" : "Томас А.Эдисон"
+    },
+    {
+      "quote" : "Когда вдохновение не приходит ко мне, я выхожу ему навстречу.",
+      "author" : "Зигмунд Фрейд"
+    },
+    {
+      "quote" : "Две вещи бесконечны: вселенная и человеческая глупость; и я еще не уверен насчет вселенной.",
+      "author" : "Альберт Энштейн"
+    },
+    {
+      "quote" : "Иллюзия - высшее наслаждение.",
+      "author" : "Оскар Уайльд"
+    },
+    {
+      "quote" : "Успех сам не приходит к Вам... Вы идете к нему.",
+      "author" : "Марва Коллинз"
+    },
+    {
+      "quote" : "Музыка - это душа языка.",
+      "author" : "Макс Гендель"
+    },
+    {
+      "quote" : "Коли свои дрова сам, и ты согреешься дважды.",
+      "author" : "Генри Форд"
+    },
+    {
+      "quote" : "Я не забочусь о том, что вы обо мне думаете, я о вас не думаю вообще.",
+      "author" : "Коко Шанель"
+    },
+    {
+      "quote" : "Работайте усердно, чтобы получить то, что любите, иначе придется полюбить то, что получили.",
+      "author" : "Бернард Шоу"
+    },
+    {
+      "quote" : "В конце концов, мы будем помнить не слова врагов, а молчание друзей.",
+      "author" : "Мартин Лютер Кинг"
+    },
+    {
+      "quote" : "Успех — это умение двигаться от неудачи к неудаче, не теряя энтузиазма.",
+      "author" : "Уинстон Черчилль"
+    },
+    {
+      "quote" : "Случайностей не существует. То, что мы ими называем — следствие некой причины, недоступной нашему взору.",
+      "author" : "Вольтер"
+    },
+    {
+      "quote" : "Самый большой риск — не брать на себя никакого риска. В мире, который очень быстро меняется, только одна стратегия гарантирует провал: отсутствие риска.",
+      "author" : "Марк Цукерберг"
+    },
+    {
+      "quote" : "Мудрые люди говорят потому, что им есть, что сказать, глупцы — потому что они должны сказать что-то.",
+      "author" : "Платон"
+    }
+  ]
+}
