@@ -1,3 +1,5 @@
+import translate from "./translate.js";
+
 const weatherError = document.querySelector('.weather-error'),
   weatherIcon = document.querySelector('.weather-icon'),
   temperature = document.querySelector('.temperature'),
@@ -5,13 +7,14 @@ const weatherError = document.querySelector('.weather-error'),
   wind = document.querySelector('.wind'),
   humidity = document.querySelector('.humidity');
 
-async function getWeather(city) {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=c9d98867ee9c39fb37e15a59e70caa33&units=metric`;
+async function getWeather() {
+  const lang = localStorage.getItem('lang')
+  const city = localStorage.getItem('city')
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${lang}&appid=c9d98867ee9c39fb37e15a59e70caa33&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
 
   if (data.message) {
-    console.log(data.message);
     weatherError.textContent = data.message;
     weatherIcon.classList.remove(weatherIcon.classList[2]);
     temperature.textContent = '';
@@ -25,8 +28,8 @@ async function getWeather(city) {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
     weatherDescription.textContent = data.weather[0].description;
-    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s.`;
-    humidity.textContent = `Humidity: ${Math.round(data.main.humidity)} %.`;
+    wind.textContent = `${translate.wind[lang]}: ${Math.round(data.wind.speed)} ${translate.windSpeed[lang]}`;
+    humidity.textContent = `${translate.humidity[lang]}: ${Math.round(data.main.humidity)} %.`;
   }
 }
 

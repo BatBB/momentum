@@ -1,6 +1,7 @@
 const name = document.querySelector('.name');
 const city = document.querySelector('.city');
 
+
 export function setLocalStorage() {
   localStorage.setItem('name', name.value);
   localStorage.setItem('city', city.value);

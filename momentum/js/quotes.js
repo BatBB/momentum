@@ -3,16 +3,17 @@ const quote = document.querySelector('.quote-text'),
 
 const getRandomQuote = quantityQuote => Math.floor(Math.random() * quantityQuote);
 
-async function getQuotes() {  
+async function getQuotes() {
+  const lang = localStorage.getItem('lang');  
   const quotes = 'data.json';
   const res = await fetch(quotes);
   const data = await res.json();
   
-  const quoteCount = data.en.length;
+  const quoteCount = data[lang].length;
   const randomQuote = getRandomQuote(quoteCount);
   
-  quote.textContent = `"${data.en[randomQuote].quote}"`;
-  author.textContent = data.en[randomQuote].author;
+  quote.textContent = `"${data[lang][randomQuote].quote}"`;
+  author.textContent = data[lang][randomQuote].author;
 }
 
 export default getQuotes;

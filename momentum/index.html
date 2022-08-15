@@ -6,7 +6,7 @@
     <link href="assets/favicon.ico" rel="shortcut icon" />
     <link rel="stylesheet" href="css/owfont-regular.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>momentum</title>
+    <title>Momentum</title>
   </head>
   <body>
     <header class="header">
@@ -76,34 +76,37 @@
     <div class="popup-settings hidden">
       <div class="column-left">
         <label
-          >Time: <input class="check-block" id="time" type="checkbox" checked
+          ><span class="time-check-text"></span
+          ><input class="check-block" id="time" type="checkbox" checked
         /></label>
         <label
-          >Date: <input class="check-block" id="date" type="checkbox" checked
+          ><span class="date-check-text"></span
+          ><input class="check-block" id="date" type="checkbox" checked
         /></label>
         <label
-          >Greeting:
-          <input class="check-block" id="greeting" type="checkbox" checked
+          ><span class="greeting-check-text"></span
+          ><input class="check-block" id="greeting" type="checkbox" checked
         /></label>
         <label
-          >Quote: <input class="check-block" id="quote" type="checkbox" checked
+          ><span class="quote-check-text"></span
+          ><input class="check-block" id="quote" type="checkbox" checked
         /></label>
         <label
-          >Audio:
-          <input class="check-block" id="player" type="checkbox" checked
+          ><span class="player-check-text"></span
+          ><input class="check-block" id="player" type="checkbox" checked
         /></label>
         <label
-          >Weather:
-          <input class="check-block" id="weather" type="checkbox" checked
+          ><span class="weather-check-text"></span
+          ><input class="check-block" id="weather" type="checkbox" checked
         /></label>
         <label
-          >Todo list:
-          <input class="check-block" id="todo" type="checkbox" checked
+          ><span class="todo-check-text"></span
+          ><input class="check-block" id="todo" type="checkbox" checked
         /></label>
       </div>
       <div class="column-right">
         <div class="language-block">
-          <div>Language:</div>
+          <div class="language-check-text"></div>
           <div class="language-select">
             <label for="en" class="language-check"
               >EN
@@ -117,7 +120,7 @@
         </div>
         <div class="images-block">
           <label class="images-api" for="imageApi"
-            >Images API:
+            ><span class="background-check-text"></span>
             <select name="imagesSource" id="imagesSource">
               <option value="github" selected>Github</option>
               <option value="unsplash">Unsplash API</option>

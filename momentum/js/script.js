@@ -1,4 +1,5 @@
 /* -------------- imports -------------- */
+import settings from "./settings.js";
 import { showTime, getTimeOfDay } from "../js/time.js";
 import { setLocalStorage, getLocalStorage } from "../js/save_local_storage.js";
 import setBg from "../js/background.js";
@@ -7,35 +8,19 @@ import getQuotes from "../js/quotes.js";
 import { createPlayList, setPlayPause, playNext, playPrev, upgradeProgressPlay, clickVolume, changeVolume, playListClick } from "../js/player.js"
 
 /* -------------- Variables -------------- */
-const slideNext = document.querySelector('.slide-next'),
-  slidePrev = document.querySelector('.slide-prev'),
-  city = document.querySelector('.city'),
-  changeQuote = document.querySelector('.change-quote'),
+const city = document.querySelector('.city'),
   play = document.querySelector('.play'),
   playNextBtn = document.querySelector('.play-next'),
   playPrevBtn = document.querySelector('.play-prev');
 
-// const getRandomNum = () => Math.floor(Math.random() * 20) + 1;
-// let randomNum = getRandomNum();
+if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en')
+
+settings();
 
 showTime();
 getLocalStorage();
 
 setBg();
-
-// const getSlideNext = () => {
-//   if (randomNum !== 20) randomNum++;
-//   else randomNum = 1;
-//   setBg(getTimeOfDay(), randomNum);
-// }
-// const getSlidePrev = () => {
-//   if (randomNum !== 1) randomNum--;
-//   else randomNum = 20;
-//   setBg(getTimeOfDay(), randomNum);
-// }
-
-// slidePrev.addEventListener('click', getSlidePrev);
-// slideNext.addEventListener('click', getSlideNext);
 
 window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
@@ -45,14 +30,15 @@ input.addEventListener('input', resizeInput);
 resizeInput.call(input);
 
 function resizeInput() {
-  this.style.width = this.value.length === 0 ? '335px' : ((this.value.length + 0.5) + 'ex');
+  this.style.width = this.value.length === 0 ? '360px' : ((this.value.length + 0.5) + 'ex');
 }
 
 city.value = localStorage.getItem('city') || 'Minsk';
-getWeather(city.value)
+localStorage.setItem('city', city.value)
+getWeather()
 
 getQuotes();
-changeQuote.addEventListener('click', getQuotes)
+// changeQuote.addEventListener('click', getQuotes)
 
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -89,6 +75,9 @@ function hiddenBlock(id) {
 document.body.addEventListener('click', (el) => {
   const className = el.target.classList[0];
   switch (className) {
+    case 'change-quote':
+      getQuotes();
+      break;
     case 'slide-next':
       setBg('next');
       break;
@@ -134,7 +123,8 @@ document.body.addEventListener('change', (el) => {
       upgradeProgressPlay(progressBar.value)
       break;
     case 'city':
-      getWeather(city.value);
+      localStorage.setItem('city', city.value)
+      getWeather();
       break;
     case 'volume-range':
       const volumeRange = document.querySelector('.volume-range');
@@ -152,8 +142,15 @@ document.body.addEventListener('change', (el) => {
       }
       break;
   }
-
   switch (el.target.value) {
+    case 'en':
+      localStorage.setItem('lang', 'en');
+      settings('en');
+      break;
+    case 'ru':
+      localStorage.setItem('lang', 'ru');
+      settings('ru');
+      break;
     case 'github':
       document.querySelector('.images-tag').classList.add('hidden');
       break;
@@ -181,42 +178,4 @@ function createTodoList() {
     todoText.value = '';
     todoItems.append(li);
   }
-  // li.textContent = todoText.value;
 }
-
-// document.querySelector('.todo-remove').addEventListener('click', () => {
-//   // // const todoText = document.querySelector('.todo-text');
-//   // const todoItem = document.querySelector('.todo-item');
-//   // const li = document.removeChild();
-//   console.dir(document.parentElement());
-// })
-
-
-// import i18next from 'https://deno.land/x/i18next/index.js';
-
-// i18next.init({
-//   lng: 'en',
-//   debug: true,
-//   resources: {
-//     en: {
-//       translation: {
-//         'morning' : 'Good morning',
-//         'afternoon' : 'Good afternoon',
-//         'evening' : 'Good evening',
-//         'night' : 'Good night',
-//         'placeholder' : '[Enter your name]',
-//       }
-//     },
-//     ru: {
-//       translation: {
-//         'vorning' : 'Доброе утро',
-//         'afternoon' : 'Добрый день',
-//         'evening' : 'Добрый вечер',
-//         'night' : 'Спокойной ночи',
-//         'placeholder' : '[Введите свое имя]'
-//       }
-//     }
-//   }
-// });
-
-// document.querySelector('.greeting').textContent = i18next.t('greeting');
