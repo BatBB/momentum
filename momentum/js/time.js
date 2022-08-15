@@ -4,7 +4,7 @@ const time = document.querySelector('.time'),
 
 export function showTime() {
   const curDate = new Date();
-  const options = { month: 'long', day: 'numeric', year: 'numeric', weekday: 'long' };
+  const options = { month: 'long', day: 'numeric', weekday: 'long' };
   time.textContent = curDate.toLocaleTimeString('en');
   date.textContent = curDate.toLocaleDateString('en', options);
   showGreeting();

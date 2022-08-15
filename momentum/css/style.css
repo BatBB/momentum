@@ -53,6 +53,7 @@ body {
   width: 100%;
   transition: 0.25s;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .container-volume-timer {
@@ -84,6 +85,7 @@ body {
   left: -10px;
   width: 60px;
   left: -65px;
+  cursor: pointer;
 }
 
 .volume {
@@ -110,11 +112,11 @@ body {
 .play-item {
   position: relative;
   padding: 5px;
-  padding-left: 20px;
   list-style: none;
   opacity: .8;
   cursor: pointer;
   transition: .3s;
+  display: flex;
 }
 
 .play-item:hover {
@@ -122,15 +124,15 @@ body {
 }
 
 .play-item::before {
-  content: "\2713";  
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-weight: 900;
+  content: ' ';
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+  background: url("../assets/svg/play.svg") center/cover;
 }
 
 .item-active::before {
-  color: #C5B358;
+  background: url("../assets/svg/pause.svg") center/cover;
 }
 
 .player-icon,
@@ -378,6 +380,11 @@ body {
   align-items: center;
 }
 
+.check-block,
+.language-check {
+  cursor: pointer;
+}
+
 .language-block {
   display: flex;
   justify-content: space-between;
@@ -420,12 +427,14 @@ body {
 
 .todo-input {
   display: flex;
-  height: 20px;
+  height: 25px;
   align-items: center;
 }
 
 .todo-text {
   width: calc(100% - 10px);
+  margin-right: 5px;
+  height: 100%;
 }
 
 .todo-add {
@@ -451,6 +460,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.item-text {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.item-text.complete {
+  text-decoration: line-through;
 }
 
 .quote {

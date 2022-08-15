@@ -1,8 +1,6 @@
 import playList from "../js/playList.js"
 
-const play = document.querySelector('.play'),
-  playNextBtn = document.querySelector('.play-next'),
-  playPrevBtn = document.querySelector('.play-prev');
+const play = document.querySelector('.play');
 
 const audio = new Audio();
 
@@ -94,6 +92,7 @@ export function playListClick(index) {
   })
   if (!isPlay || index !== playNum) {
     playNum = index;
+    pauseTime = 0;
     playAudio();
   }
   else {

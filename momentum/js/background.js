@@ -4,13 +4,11 @@ const getRandomNum = (length) => Math.floor(Math.random() * length) + 1;
 let imageNum = getRandomNum(20);
 
 
-
-export default async function setBg() {
+export default async function setBg(flipping) {
   const body = document.body;
-  // const bgNum = randomNum.toString().padStart(2, '0');
   const img = new Image();
   const imagesApi = imagesSource.value;
-  const query = 'space';
+  const query = tag.value ? tag.value : getTimeOfDay();
 
 
   const source = {
@@ -21,24 +19,25 @@ export default async function setBg() {
 
   const url = source[imagesApi];
 
-  if (imagesApi === 'github') {
-    console.log(imageNum);
-    img.src = `${url}${getTimeOfDay()}/${imageNum.toString().padStart(2, '0')}.webp`
+  if (imagesApi === 'unsplash') {
+    const res = await fetch(url);
+    const data = await res.json();
+    img.src = data.urls.regular;
+  } else if (imagesApi === 'flickr') {
+    const res = await fetch(url);
+    const data = await res.json();
+    img.src = data.photos.photo[getRandomNum(100)].url_l
+  } else {
+    if (flipping === 'next') {
+      imageNum = (imageNum === 20) ? 1 : imageNum + 1;
+    }
+    if (flipping === 'prev') {
+      imageNum = (imageNum === 1) ? 20 : imageNum - 1;
+    }
+    img.src = `${url}${getTimeOfDay()}/${(imageNum).toString().padStart(2, '0')}.webp`;
   }
+
   img.onload = () => {
     body.style.backgroundImage = `url(${img.src})`;
   };
 }
-
-// const res = await fetch(url);
-// const data = await res.json(); 
-// img.src = data.photos.photo[5].url_l;
-
-// const imagesApi = imagesSource;
-// console.dir(imagesApi.options.selectedIndex);
-
-// const url = source.unsplash;
-// const res = await fetch(url);
-// const data = await res.json(); 
-// console.dir(data.urls.regular);
-// img.src = data.urls.regular;

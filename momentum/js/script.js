@@ -77,11 +77,6 @@ playItem.forEach((el, ind) => {
   })
 })
 
-function toggleActive() {
-  document.querySelector('.overlay').classList.toggle('hidden');
-  document.querySelector('.popup-settings').classList.toggle('hidden');
-}
-
 function hiddenBlock(id) {
   const checkbox = document.getElementById(id);
   if (checkbox.checked === false) {
@@ -92,21 +87,28 @@ function hiddenBlock(id) {
   }
 }
 document.body.addEventListener('click', (el) => {
-  const className = el.target.classList.value;
+  const className = el.target.classList[0];
   switch (className) {
     case 'slide-next':
-      
+      setBg('next');
+      break;
+    case 'slide-prev':
+      setBg('prev');
       break;
     case 'setting': {
-      toggleActive();
+      document.querySelector('.popup-settings').classList.remove('hidden');
+      document.querySelector('.overlay').classList.remove('hidden');
       break;
     }
     case 'overlay': {
-      toggleActive();
+      document.querySelector('.popup-settings').classList.add('hidden');
+      document.querySelector('.overlay').classList.add('hidden');
+      document.querySelector('.popup-todo').classList.add('hidden');
       break;
     }
     case 'todo': {
-      document.querySelector('.popup-todo').classList.toggle('hidden');
+      document.querySelector('.popup-todo').classList.remove('hidden');
+      document.querySelector('.overlay').classList.remove('hidden');
       break;
     }
     case 'todo-add': {
@@ -118,7 +120,7 @@ document.body.addEventListener('click', (el) => {
       break;
     }
     case 'item-text': {
-      el.target.style.textDecoration = "line-through";
+      el.target.classList.toggle('complete');
       break;
     }
   }
@@ -151,17 +153,21 @@ document.body.addEventListener('change', (el) => {
       break;
   }
 
-  console.dir(el.target.value)
   switch (el.target.value) {
     case 'github':
       document.querySelector('.images-tag').classList.add('hidden');
-    break;
+      break;
     case 'unsplash':
       document.querySelector('.images-tag').classList.remove('hidden');
-    break;
+      setBg();
+      break;
     case 'flickr':
       document.querySelector('.images-tag').classList.remove('hidden');
-    break;
+      setBg();
+      break;
+  }
+  if (tag.value) {
+    setBg();
   }
 })
 
