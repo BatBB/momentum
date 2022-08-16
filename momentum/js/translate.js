@@ -1,4 +1,8 @@
 const translate = {
+  'minsk' : {
+    'en' : 'Minsk',
+    'ru' : 'Минск'
+  },
   'placeHolderName': {
     'en' : '[Enter your name]',
     'ru' : '[Введите свое имя]'

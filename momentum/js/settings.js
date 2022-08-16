@@ -5,6 +5,7 @@ import getWeather from "./weather.js";
 
 export default function setting() {
   const lang = localStorage.getItem('lang');
+  document.getElementById(localStorage.getItem('lang')).checked = true;
   document.querySelector('.city').placeholder = translate.placeHolderCity[lang];
   document.querySelector('.name').placeholder = translate.placeHolderName[lang];
   document.querySelector('.time-check-text').textContent = translate.time[lang] + ':';
@@ -16,6 +17,9 @@ export default function setting() {
   document.querySelector('.todo-check-text').textContent = translate.todo[lang] + ':';
   document.querySelector('.language-check-text').textContent = translate.language[lang] + ':';
   document.querySelector('.background-check-text').textContent = translate.background[lang] + ':';
+  if (document.querySelector('.city').value.toLowerCase() === 'minsk' || document.querySelector('.city').value.toLowerCase() === 'минск') {
+    document.querySelector('.city').value = translate.minsk[lang];
+  }
 
   showTime();
   getQuotes();

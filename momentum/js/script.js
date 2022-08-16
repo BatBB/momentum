@@ -6,6 +6,7 @@ import setBg from "../js/background.js";
 import getWeather from "../js/weather.js";
 import getQuotes from "../js/quotes.js";
 import { createPlayList, setPlayPause, playNext, playPrev, upgradeProgressPlay, clickVolume, changeVolume, playListClick } from "../js/player.js"
+import translate from "./translate.js";
 
 /* -------------- Variables -------------- */
 const city = document.querySelector('.city'),
@@ -13,7 +14,23 @@ const city = document.querySelector('.city'),
   playNextBtn = document.querySelector('.play-next'),
   playPrevBtn = document.querySelector('.play-prev');
 
-if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en')
+if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
+const lang = localStorage.getItem('lang');
+
+const consoleText = `Score: 160 out of 160 
+1. Часы и календарь +15
+2. Приветствие +10
+3. Смена фонового изображения +20
+4. Виджет погоды +15
+5. Виджет цитата дня +10
+6. Аудиоплеер +15
+7. Продвинутый аудиоплеер +20
+8. Перевод приложения на два языка (en/ru) +15
+9. Получение фонового изображения от API +10 
+10. Настройки приложения +20
+11. Дополнительный функционал на выбор: ToDo List +10')`;
+
+console.log(consoleText);
 
 settings();
 
@@ -33,7 +50,7 @@ function resizeInput() {
   this.style.width = this.value.length === 0 ? '360px' : ((this.value.length + 0.5) + 'ex');
 }
 
-city.value = localStorage.getItem('city') || 'Minsk';
+city.value = localStorage.getItem('city') || translate.minsk[lang];
 localStorage.setItem('city', city.value)
 getWeather()
 
@@ -179,3 +196,5 @@ function createTodoList() {
     todoItems.append(li);
   }
 }
+
+
