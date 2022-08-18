@@ -16,6 +16,7 @@ export function setLocalStorage() {
   localStorage.setItem('weatherSetting', document.getElementById('weather').checked);
   localStorage.setItem('todoSetting', document.getElementById('todo').checked);
   localStorage.setItem('imagesSourceSetting', document.getElementById('imagesSource').value);
+  localStorage.setItem('tagSetting', document.getElementById('tag').value);
 }
 
 export function getLocalStorage() {
@@ -39,6 +40,10 @@ export function getLocalStorage() {
 
   document.getElementById('imagesSource').value = localStorage.getItem('imagesSourceSetting');
   if (document.getElementById('imagesSource').value !== 'github') document.querySelector('.images-tag').classList.remove('hidden');
-  setBg();
+  
+  if (localStorage.getItem('tagSetting') === null) document.getElementById('tag').value = '';
+  document.getElementById('tag').value = localStorage.getItem('tagSetting');
+  console.log(document.getElementById('tag').value);
 
+  setBg();
 }

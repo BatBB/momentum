@@ -173,13 +173,16 @@ document.body.addEventListener('change', (el) => {
       break;
     case 'github':
       document.querySelector('.images-tag').classList.add('hidden');
+      setBg();
       break;
     case 'unsplash':
       document.querySelector('.images-tag').classList.remove('hidden');
+      document.getElementById('tag').value = localStorage.getItem('tagSetting')
       setBg();
       break;
     case 'flickr':
       document.querySelector('.images-tag').classList.remove('hidden');
+      document.getElementById('tag').value = localStorage.getItem('tagSetting')
       setBg();
       break;
   }

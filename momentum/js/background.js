@@ -9,8 +9,7 @@ export default async function setBg(flipping) {
   const img = new Image();
   const imagesApi = imagesSource.value;
   const query = tag.value ? tag.value : getTimeOfDay();
-
-
+ 
   const source = {
     'github': `https://raw.githubusercontent.com/BatBB/stage1-tasks/assets/images/`,
     'unsplash': `https://api.unsplash.com/photos/random?orientation=landscape&query=${query}&client_id=Y4jwptCA5peGCYzKv764aFLn_T7LifPsqqcKi3NUNqk`,
