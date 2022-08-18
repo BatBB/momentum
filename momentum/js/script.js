@@ -1,12 +1,12 @@
 /* -------------- imports -------------- */
-import settings from "./settings.js";
-import { showTime, getTimeOfDay } from "../js/time.js";
+import translate from "./translate.js";
+import { showTime } from "../js/time.js";
 import { setLocalStorage, getLocalStorage } from "../js/save_local_storage.js";
 import setBg from "../js/background.js";
 import getWeather from "../js/weather.js";
 import getQuotes from "../js/quotes.js";
 import { createPlayList, setPlayPause, playNext, playPrev, upgradeProgressPlay, clickVolume, changeVolume, playListClick } from "../js/player.js"
-import translate from "./translate.js";
+import language from "./language.js";
 
 /* -------------- Variables -------------- */
 const city = document.querySelector('.city'),
@@ -16,6 +16,11 @@ const city = document.querySelector('.city'),
 
 if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 const lang = localStorage.getItem('lang');
+
+if (!localStorage.getItem('timeSetting')) {
+  console.log(localStorage.getItem('timeSetting'));
+}
+
 
 const consoleText = `Score: 160 out of 160 
 1. Часы и календарь +15
@@ -32,15 +37,16 @@ const consoleText = `Score: 160 out of 160
 
 console.log(consoleText);
 
-settings();
+window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', getLocalStorage);
+
+translate();
 
 showTime();
 getLocalStorage();
 
 setBg();
 
-window.addEventListener('beforeunload', setLocalStorage);
-window.addEventListener('load', getLocalStorage);
 
 const input = document.querySelector('.name');
 input.addEventListener('input', resizeInput);
@@ -50,15 +56,12 @@ function resizeInput() {
   this.style.width = this.value.length === 0 ? '360px' : ((this.value.length + 0.5) + 'ex');
 }
 
-city.value = localStorage.getItem('city') || translate.minsk[lang];
-localStorage.setItem('city', city.value)
+city.value = localStorage.getItem('city') || language.minsk[lang];
+localStorage.setItem('city', city.value);
 getWeather()
 
 getQuotes();
-// changeQuote.addEventListener('click', getQuotes)
 
-
-/*--------------------------------------------------------------------------------------------------*/
 createPlayList();
 
 changeVolume(0.5);
@@ -162,11 +165,11 @@ document.body.addEventListener('change', (el) => {
   switch (el.target.value) {
     case 'en':
       localStorage.setItem('lang', 'en');
-      settings('en');
+      translate('en');
       break;
     case 'ru':
       localStorage.setItem('lang', 'ru');
-      settings('ru');
+      translate('ru');
       break;
     case 'github':
       document.querySelector('.images-tag').classList.add('hidden');

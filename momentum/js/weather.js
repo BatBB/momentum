@@ -1,4 +1,4 @@
-import translate from "./translate.js";
+import language from "./language.js";
 
 const weatherError = document.querySelector('.weather-error'),
   weatherIcon = document.querySelector('.weather-icon'),
@@ -28,8 +28,8 @@ async function getWeather() {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
     weatherDescription.textContent = data.weather[0].description;
-    wind.textContent = `${translate.wind[lang]}: ${Math.round(data.wind.speed)} ${translate.windSpeed[lang]}`;
-    humidity.textContent = `${translate.humidity[lang]}: ${Math.round(data.main.humidity)} %.`;
+    wind.textContent = `${language.wind[lang]}: ${Math.round(data.wind.speed)} ${language.windSpeed[lang]}`;
+    humidity.textContent = `${language.humidity[lang]}: ${Math.round(data.main.humidity)} %.`;
   }
 }
 

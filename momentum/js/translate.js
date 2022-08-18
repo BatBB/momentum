@@ -1,80 +1,27 @@
-const translate = {
-  'minsk' : {
-    'en' : 'Minsk',
-    'ru' : 'Минск'
-  },
-  'placeHolderName': {
-    'en' : '[Enter your name]',
-    'ru' : '[Введите свое имя]'
-  },
-  'placeHolderCity': {
-    'en' : 'Enter city',
-    'ru' : 'Введите город'
-  },
-  'night': {
-    'en' : 'Good night,',
-    'ru' : 'Доброй ночи,'
-  },
-  'morning': {
-    'en' : 'Good morning,',
-    'ru' : 'Доброе утро,'
-  },
-  'afternoon': {
-    'en' : 'Good afternoon,',
-    'ru' : 'Добрый день,'
-  },
-  'evening': {
-    'en' : 'Good evening,',
-    'ru' : 'Добрый вечер,'
-  },
-  'wind' : {
-    'en' : 'Wind speed',
-    'ru' : 'Скорость ветра'
-  },
-  'windSpeed' : {
-    'en' : 'm/s',
-    'ru' : 'м/с'
-  },
-  'humidity' : {
-    'en' : 'Humidity',
-    'ru' : 'Влажность'
-  },
-  'time' : {
-    'en' : 'Time',
-    'ru' : 'Время'
-  },
-  'date' : {
-    'en' : 'Date',
-    'ru' : 'Дата'
-  },
-  'greeting' : {
-    'en' : 'Greeting',
-    'ru' : 'Приветствие'
-  },
-  'quote' : {
-    'en' : 'Quote',
-    'ru' : 'Цитата'
-  },
-  'player' : {
-    'en' : 'Player',
-    'ru' : 'Плеер'
-  },
-  'weather' : {
-    'en' : 'Weather',
-    'ru' : 'Погода'
-  },
-  'todo' : {
-    'en' : 'Todo list',
-    'ru' : 'Список задач'
-  },
-  'language' : {
-    'en' : 'Language',
-    'ru' : 'Язык'
-  },
-  'background' : {
-    'en' : 'Background',
-    'ru' : 'Фон'
-  },
-}
+import language from "./language.js";
+import { showTime } from "./time.js";
+import getQuotes from "./quotes.js";
+import getWeather from "./weather.js";
 
-export default translate;
+export default function setting() {
+  const lang = localStorage.getItem('lang');
+  document.getElementById(localStorage.getItem('lang')).checked = true;
+  document.querySelector('.city').placeholder = language.placeHolderCity[lang];
+  document.querySelector('.name').placeholder = language.placeHolderName[lang];
+  document.querySelector('.time-check-text').textContent = language.time[lang] + ':';
+  document.querySelector('.date-check-text').textContent = language.date[lang] + ':';
+  document.querySelector('.greeting-check-text').textContent = language.greeting[lang] + ':';
+  document.querySelector('.quote-check-text').textContent = language.quote[lang] + ':';
+  document.querySelector('.player-check-text').textContent = language.player[lang] + ':';
+  document.querySelector('.weather-check-text').textContent = language.weather[lang] + ':';
+  document.querySelector('.todo-check-text').textContent = language.todo[lang] + ':';
+  document.querySelector('.language-check-text').textContent = language.language[lang] + ':';
+  document.querySelector('.background-check-text').textContent = language.background[lang] + ':';
+  if (document.querySelector('.city').value.toLowerCase() === 'minsk' || document.querySelector('.city').value.toLowerCase() === 'минск') {
+    document.querySelector('.city').value = language.minsk[lang];
+  }
+
+  showTime();
+  getQuotes();
+  getWeather();
+}

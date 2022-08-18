@@ -1,4 +1,4 @@
-import translate from './translate.js'
+import language from './language.js'
 
 const time = document.querySelector('.time'),
   date = document.querySelector('.date'),
@@ -8,7 +8,7 @@ export function showTime() {
   const lang = localStorage.getItem('lang');
   const curDate = new Date();
   const options = { month: 'long', day: 'numeric', weekday: 'long' };
-  time.textContent = curDate.toLocaleTimeString(lang);
+  time.textContent = curDate.toLocaleTimeString();
   date.textContent = curDate.toLocaleDateString(lang, options);
   showGreeting(lang);
   setTimeout(showTime, 1000);
@@ -20,5 +20,5 @@ export function getTimeOfDay() {
 }
 
 function showGreeting(lang) {
-  greeting.textContent = translate[getTimeOfDay()][lang]
+  greeting.textContent = language[getTimeOfDay()][lang]
 } 
