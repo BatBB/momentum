@@ -7,7 +7,7 @@ let imageNum = getRandomNum(20);
 export default async function setBg(flipping) {
   const body = document.body;
   const img = new Image();
-  const imagesApi = imagesSource.value;
+  const imagesApi = imagesSource.value || 'github';
   const query = tag.value ? tag.value : getTimeOfDay();
  
   const source = {
