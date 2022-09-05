@@ -17,9 +17,9 @@ const city = document.querySelector('.city'),
 if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 const lang = localStorage.getItem('lang');
 
-if (!localStorage.getItem('timeSetting')) {
-  console.log(localStorage.getItem('timeSetting'));
-}
+// if (!localStorage.getItem('timeSetting')) {
+//   console.log(localStorage.getItem('timeSetting'));
+// }
 
 
 const consoleText = `Score: 160 out of 160 

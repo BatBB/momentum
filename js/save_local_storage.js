@@ -43,7 +43,6 @@ export function getLocalStorage() {
   
   if (localStorage.getItem('tagSetting') === null) document.getElementById('tag').value = '';
   document.getElementById('tag').value = localStorage.getItem('tagSetting');
-  console.log(document.getElementById('tag').value);
-
+  
   setBg();
 }
